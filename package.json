@@ -1,0 +1,38 @@
+{
+  "name": "vite-plugin-ssam-export",
+  "version": "0.1.0",
+  "description": "Image export plugin for Ssam",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "files": [
+    "/dist"
+  ],
+  "scripts": {
+    "build": "tsc --noemit && tsup"
+  },
+  "keywords": [
+    "ssam",
+    "vite-plugin"
+  ],
+  "author": "Daeinc",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^18.13.0",
+    "tsup": "^6.6.3",
+    "typescript": "^4.9.5",
+    "vite": "^4.1.1"
+  },
+  "dependencies": {
+    "ansi-regex": "^6.0.1",
+    "kleur": "^4.1.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cdaein/vite-plugin-ssam-export.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cdaein/vite-plugin-ssam-export/issues"
+  },
+  "homepage": "https://github.com/cdaein/vite-plugin-ssam-export#readme"
+}
