@@ -44,22 +44,22 @@ export const ssamExport = (opts: Options = {}): PluginOption => ({
   configureServer(server: ViteDevServer) {
     const { log, outDir } = Object.assign(defaultOptions, opts);
 
-    // if outDir not exist, create one
-    if (!fs.existsSync(outDir)) {
-      fs.promises
-        .mkdir(outDir)
-        .then(() => {
-          const msg = `${prefix()} created a new directory at ${path.resolve(
-            outDir
-          )}`;
-          console.log(msg);
-        })
-        .catch((err) => {
-          console.error(`${prefix()} ${yellow(`${err}`)}`);
-        });
-    }
-
     server.ws.on("ssam:export", (data: ExportData, client) => {
+      // if outDir not exist, create one
+      if (!fs.existsSync(outDir)) {
+        fs.promises
+          .mkdir(outDir)
+          .then(() => {
+            const msg = `${prefix()} created a new directory at ${path.resolve(
+              outDir
+            )}`;
+            console.log(msg);
+          })
+          .catch((err) => {
+            console.error(`${prefix()} ${yellow(`${err}`)}`);
+          });
+      }
+
       const { image, filename, format } = data;
 
       if (!["jpeg", "jpg", "png", "webp"].includes(format)) {
