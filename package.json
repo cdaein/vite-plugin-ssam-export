@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-ssam-export",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Image export plugin for Ssam",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
