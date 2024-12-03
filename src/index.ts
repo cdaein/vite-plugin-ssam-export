@@ -1,3 +1,6 @@
+// TODO:
+// - handle png sequence "pngs" w/ot relying on ffmpeg
+
 import type { PluginOption, ViteDevServer } from "vite";
 import fs from "node:fs";
 import path from "node:path";
@@ -51,7 +54,7 @@ export const ssamExport = (opts: Options = {}): PluginOption => ({
           .mkdir(outDir)
           .then(() => {
             const msg = `${prefix()} created a new directory at ${path.resolve(
-              outDir
+              outDir,
             )}`;
             console.log(msg);
           })
