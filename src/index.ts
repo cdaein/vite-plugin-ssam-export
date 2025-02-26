@@ -4,8 +4,8 @@
 import type { PluginOption, ViteDevServer } from "vite";
 import fs from "node:fs";
 import path from "node:path";
-import kleur from "kleur";
 import ansiRegex from "ansi-regex";
+import { color } from "./utils";
 
 type Options = {
   /**
@@ -31,10 +31,8 @@ const defaultOptions = {
   outDir: "./output",
 };
 
-const { gray, green, yellow } = kleur;
-
 const prefix = () => {
-  return `${gray(new Date().toLocaleTimeString())} ${green(`[ssam-export]`)}`;
+  return `${color(new Date().toLocaleTimeString(), "gray")} ${color(`[ssam-export]`, "green")}`;
 };
 
 const removeAnsiEscapeCodes = (str: string) => {
@@ -59,14 +57,14 @@ export const ssamExport = (opts: Options = {}): PluginOption => ({
             console.log(msg);
           })
           .catch((err) => {
-            console.error(`${prefix()} ${yellow(`${err}`)}`);
+            console.error(`${prefix()} ${color(`${err}`, "yellow")}`);
           });
       }
 
       const { image, filename, format } = data;
 
       if (!["jpeg", "jpg", "png", "webp"].includes(format)) {
-        const msg = `${prefix()} ${yellow(`${format} is not supported`)}`;
+        const msg = `${prefix()} ${color(`${format} is not supported`, "yellow")}`;
         log && client.send("ssam:warn", { msg: removeAnsiEscapeCodes(msg) });
         console.error(msg);
         return;
@@ -84,7 +82,7 @@ export const ssamExport = (opts: Options = {}): PluginOption => ({
           console.log(msg);
         })
         .catch((err) => {
-          const msg = `${prefix()} ${yellow(err)}`;
+          const msg = `${prefix()} ${color(err, "yellow")}`;
           log && client.send("ssam:warn", { msg: removeAnsiEscapeCodes(msg) });
           console.error(msg);
         });
